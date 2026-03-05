@@ -1,0 +1,48 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# AI Camera System — Python Dependencies
+# Install:  pip install -r requirements.txt
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Web Framework ──────────────────────────────────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0        # ASGI server (includes WebSockets + HTTP/2)
+python-multipart>=0.0.9          # Required for file upload endpoints
+
+# ── Computer Vision ────────────────────────────────────────────────────────────
+opencv-python-headless>=4.9.0    # Headless OpenCV — no GUI window (for VPS/server)
+Pillow>=10.3.0                   # PIL image handling (used by Qwen pipeline)
+numpy>=1.26.0
+
+# ── Deep Learning ─────────────────────────────────────────────────────────────
+torch>=2.2.0                     # PyTorch (CPU build by default)
+torchvision>=0.17.0
+
+# ── Object Detection ──────────────────────────────────────────────────────────
+ultralytics>=8.2.0               # YOLOv8 / YOLOv9 / YOLOv10 (auto-downloads yolov8n.pt)
+
+# ── Vision-Language Model ─────────────────────────────────────────────────────
+transformers>=4.41.0             # Qwen3.5-0.8B via pipeline("image-text-to-text")
+accelerate>=0.30.0               # Required by transformers for device_map / fp16
+sentencepiece>=0.2.0             # Tokenizer dependency for Qwen
+
+# ── Face Recognition ──────────────────────────────────────────────────────────
+insightface>=0.7.3               # ArcFace-based face detection + embedding
+onnxruntime>=1.18.0              # Required by InsightFace (CPU runtime)
+# onnxruntime-gpu>=1.18.0        # ← Uncomment instead of above for GPU inference
+
+# ── Async / Streaming ─────────────────────────────────────────────────────────
+httpx>=0.27.0                    # Async HTTP client (optional — useful for testing)
+anyio>=4.3.0
+starlette>=0.37.0                # Bundled with FastAPI — explicit pin for streaming
+
+# ─────────────────────────────────────────────────────────────────────────────
+# GPU / CUDA NOTE
+# By default torch installs the CPU-only build.
+# For NVIDIA GPU support on your VPS, replace the torch lines above with:
+#
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+#
+# Then set these env vars before starting the server:
+#   YOLO_DEVICE=cuda
+#   QWEN_DEVICE=cuda
+# ─────────────────────────────────────────────────────────────────────────────

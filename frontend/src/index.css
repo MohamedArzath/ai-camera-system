@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-white dark:bg-ink-950 text-gray-900 dark:text-ink-100 font-sans antialiased transition-colors duration-200;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-ink-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-ink-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-ink-500;
+  }
+}
+
+@layer components {
+
+  /* Card / panel */
+  .panel {
+    @apply bg-white dark:bg-ink-900 border border-gray-200 dark:border-ink-800 rounded-2xl shadow-sm dark:shadow-none;
+  }
+
+  /* Small badge pill */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  /* Blinking live dot */
+  .live-dot {
+    @apply inline-block w-2 h-2 rounded-full bg-neon animate-blink;
+  }
+
+  /* Label / value pair */
+  .stat-label {
+    @apply text-xs font-medium tracking-widest uppercase text-gray-500 dark:text-ink-500;
+  }
+
+  .stat-value {
+    @apply text-2xl font-bold text-gray-900 dark:text-ink-50 tabular-nums;
+  }
+
+  /* Muted text */
+  .text-muted {
+    @apply text-gray-500 dark:text-ink-500;
+  }
+
+  /* Surface text */
+  .text-surface {
+    @apply text-gray-900 dark:text-ink-100;
+  }
+
+  /* Card border */
+  .card-border {
+    @apply border border-gray-200 dark:border-ink-700;
+  }
+}
